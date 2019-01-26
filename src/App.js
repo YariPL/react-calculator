@@ -13,3 +13,22 @@ class App extends Component {
 }
 
 export default App;
+
+class Display extends Component {
+  render() {
+    return(
+      <div className="Display">
+
+      </div>
+    )
+  }
+}
+
+class Buttons extends Component {
+  render() {
+    return(
+      <div className="Buttons">
+      </div>
+    )
+  }
+}
