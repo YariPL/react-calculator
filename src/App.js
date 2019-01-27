@@ -28,46 +28,48 @@ class Buttons extends Component {
   render() {
     return(
       <div className="Buttons">
-        <div class='row'>
-          <div class='ac'>
+        <div className='row'>
+          <div className='ac'>
           </div>
-          <div class='by'>
+          <div className='by'>
           </div>
-          <div class='times'>
-          </div>
-        </div>
-        <div class='row'>
-          <div class='seven'>
-          </div>
-          <div class='eight'>
-          </div>
-          <div class='nine'>
-          </div>
-          <div class='minus'>
+          <div className='times'>
           </div>
         </div>
-        <div class='row'>
-          <div class='four'>
+        <div className='row'>
+          <div className='seven'>
           </div>
-          <div class='five'>
+          <div className='eight'>
           </div>
-          <div class='six'>
+          <div className='nine'>
           </div>
-          <div class='plus'>
-          </div>
-        </div>
-        <div class='row'>
-          <div class='one'>
-          </div>
-          <div class='two'>
-          </div>
-          <div class='three'>
+          <div className='minus'>
           </div>
         </div>
-        <div class='row'>
-          <div class='zero'>
+        <div className='row'>
+          <div className='four'>
           </div>
-          <div class='dot'>
+          <div className='five'>
+          </div>
+          <div className='six'>
+          </div>
+          <div className='plus'>
+          </div>
+        </div>
+        <div className='row row4'>
+          <div className='one'>
+          </div>
+          <div className='two'>
+          </div>
+          <div className='three'>
+          </div>
+          <div className='equal'>
+          </div>
+        </div>
+        <div className='row row5'>
+          <div className='zero'>
+          </div>
+          <div className='dot'>
           </div>
         </div>
 
