@@ -56,7 +56,7 @@ class Buttons extends Component {
           <div className='plus'>
           </div>
         </div>
-        <div className='row rowSpecial'>
+        <div className='row rowSpecial equalRow'>
           <div className='one'>
           </div>
           <div className='two'>
@@ -66,7 +66,7 @@ class Buttons extends Component {
          <div className='equal'>
           </div>
         </div>
-       
+
         <div className='row rowSpecial'>
           <div className='zero'>
           </div>

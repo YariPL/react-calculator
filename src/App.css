@@ -51,5 +51,7 @@ body {
         height: 200%;
         width: 25%;
         border: 1px solid; }
+    .App .Buttons .equalRow {
+      width: 100%; }
 
 /*# sourceMappingURL=App.css.map */
