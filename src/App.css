@@ -22,7 +22,9 @@ body {
   .App .Buttons {
     height: 80%;
     width: 100%;
-    background: gray; }
+    background: gray;
+    display: flex;
+    flex-wrap: wrap; }
     .App .Buttons .row {
       height: 20%;
       width: 100%;
@@ -37,5 +39,17 @@ body {
         width: 50%; }
       .App .Buttons .row .zero {
         width: 50%; }
+    .App .Buttons .rowSpecial {
+      width: 75%; }
+      .App .Buttons .rowSpecial div {
+        width: 25%; }
+      .App .Buttons .rowSpecial .zero {
+        width: 67%; }
+      .App .Buttons .rowSpecial .dot {
+        width: 33%; }
+      .App .Buttons .rowSpecial .equal {
+        height: 200%;
+        width: 25%;
+        border: 1px solid; }
 
 /*# sourceMappingURL=App.css.map */

@@ -56,24 +56,25 @@ class Buttons extends Component {
           <div className='plus'>
           </div>
         </div>
-        <div className='row row4'>
+        <div className='row rowSpecial'>
           <div className='one'>
           </div>
           <div className='two'>
           </div>
           <div className='three'>
           </div>
-          <div className='equal'>
+         <div className='equal'>
           </div>
         </div>
-        <div className='row row5'>
+       
+        <div className='row rowSpecial'>
           <div className='zero'>
           </div>
           <div className='dot'>
           </div>
         </div>
-
-      </div>
+         
+        </div>
     )
   }
 }

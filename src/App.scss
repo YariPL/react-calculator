@@ -25,6 +25,8 @@ body {
 		height: 80%;
 		width: 100%;
 		background: gray;
+		display: flex;
+		flex-wrap: wrap;
 		.row {
 			height: 20%;
 			width:100%;
@@ -43,10 +45,26 @@ body {
 			.zero {
 				width: 50%;
 			}
+			
+		}
+		.rowSpecial {
+			width: 75%;
+			div{
+				width: 25%;
+			}
+			.zero {
+				width: 67%;
+			}
+			.dot {
+				width: 33%;
+			}
 			.equal {
-				
+				height: 200%;
+				width: 25%;
+				border: 1px solid;
 			}
 		}
+		
 	}
 
 }
