@@ -32,7 +32,14 @@ body {
       .App .Buttons .row div {
         width: 25%;
         height: 100%;
-        border: 1px solid; }
+        border: 1px solid;
+        position: relative; }
+        .App .Buttons .row div span {
+          font-size: 20px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%); }
       .App .Buttons .row div:hover {
         background: red; }
       .App .Buttons .row .ac {
