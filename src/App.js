@@ -29,9 +29,6 @@ class Buttons extends Component {
     return(
       <div className="Buttons">
         <div class='row'>
-
-        </div>
-        <div class='row'>
           <div class='ac'>
           </div>
           <div class='by'>
@@ -60,9 +57,20 @@ class Buttons extends Component {
           </div>
         </div>
         <div class='row'>
-        
+          <div class='one'>
+          </div>
+          <div class='two'>
+          </div>
+          <div class='three'>
+          </div>
         </div>
-         
+        <div class='row'>
+          <div class='zero'>
+          </div>
+          <div class='dot'>
+          </div>
+        </div>
+
       </div>
     )
   }

@@ -28,6 +28,21 @@ body {
 		.row {
 			height: 20%;
 			width:100%;
+			display:flex;
+			div {
+				width: 25%;
+				height: 100%;
+				border:1px solid;
+			}
+			div:hover {
+				background: red;
+			}
+			.ac {
+				width: 50%;
+			}
+			.zero {
+				width: 50%;
+			}
 		}
 	}
 

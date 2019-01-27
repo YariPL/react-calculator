@@ -25,6 +25,17 @@ body {
     background: gray; }
     .App .Buttons .row {
       height: 20%;
-      width: 100%; }
+      width: 100%;
+      display: flex; }
+      .App .Buttons .row div {
+        width: 25%;
+        height: 100%;
+        border: 1px solid; }
+      .App .Buttons .row div:hover {
+        background: red; }
+      .App .Buttons .row .ac {
+        width: 50%; }
+      .App .Buttons .row .zero {
+        width: 50%; }
 
 /*# sourceMappingURL=App.css.map */
