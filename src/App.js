@@ -32,7 +32,7 @@ class Display extends Component {
   render() {
     return(
       <div className="Display">
-        <div>{this.props.value}</div>
+        <div><input type='text' value={this.props.value} /></div>
       </div>
     )
   }

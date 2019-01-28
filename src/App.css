@@ -22,7 +22,19 @@ body {
     width: 100%;
     background: #0c3a47;
     box-sizing: border-box;
-    border: 2px solid; }
+    border: 2px solid;
+    position: relative; }
+    .App .Display div {
+      height: 100%; }
+      .App .Display div input {
+        background: #0c3a47;
+        border: 0;
+        color: white;
+        padding-left: 14px;
+        font-size: 35px;
+        box-sizing: border-box;
+        height: 100%;
+        widows: 100%; }
   .App .Buttons {
     height: 80%;
     width: 100%;
