@@ -13,6 +13,7 @@ class App extends Component {
 
   }
   calculate =function(e){
+
     console.log(e);
     console.log(this.state.lastClicked);
     if(e === 'AC') {
@@ -37,14 +38,15 @@ class App extends Component {
       }
         
     } else if(e === '/' || e=== '*' || e=== '-' || e ==='+' || e==='.'){
+        let l = this.state.lastClicked;
+        if(l === '/' || l=== '*' || l=== '-' || l ==='+' || l==='.')return;
         //avoid more than one type of above symbols
-        if(this.state.lastClicked !== e){
 
         this.setState({
           calculations:this.state.calculations + e,
           lastClicked:e
         });
-      } 
+       
     } else {
       this.setState({
           calculations:this.state.calculations + e,
