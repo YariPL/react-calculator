@@ -31,6 +31,7 @@ class App extends Component {
         })
       }else {
         this.setState({
+          //use eval just because it's learning project(NOT TO USE IN REAL PROJECT)
           value:eval(this.state.calculations),
           calculations:'',
           lastClicked:e
@@ -38,20 +39,20 @@ class App extends Component {
       }
         
     } else if(e === '/' || e=== '*' || e=== '-' || e ==='+' || e==='.'){
-        let l = this.state.lastClicked;
-        if(l === '/' || l=== '*' || l=== '-' || l ==='+' || l==='.')return;
-        //avoid more than one type of above symbols
+      let l = this.state.lastClicked;
+      if(l === '/' || l=== '*' || l=== '-' || l ==='+' || l==='.')return;
+      //avoid more than one type of above symbols
 
-        this.setState({
-          calculations:this.state.calculations + e,
-          lastClicked:e
-        });
+      this.setState({
+        calculations:this.state.calculations + e,
+        lastClicked:e
+      });
        
     } else {
       this.setState({
-          calculations:this.state.calculations + e,
-          lastClicked:e
-        });
+        calculations:this.state.calculations + e,
+        lastClicked:e
+      });
     }
   }
   render() {
