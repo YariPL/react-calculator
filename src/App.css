@@ -24,6 +24,12 @@ body {
     box-sizing: border-box;
     border: 2px solid;
     position: relative; }
+    .App .Display .result {
+      height: 20%;
+      background: red;
+      color: white;
+      width: fit-content;
+      padding: 4px; }
     .App .Display div {
       height: 100%; }
       .App .Display div input {

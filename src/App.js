@@ -5,33 +5,57 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      value:'',
-      calculations: ''
+      value:0,
+      calculations: '',
+      lastClicked:''
     }
         this.calculate = this.calculate.bind(this)
 
   }
   calculate =function(e){
     console.log(e);
+    console.log(this.state.lastClicked);
     if(e === 'AC') {
       this.setState({
         value:0,
-        calculations:0
+        calculations:'',
+        lastClicked:''
       })
     } else if(e === '='){
+      if(this.state.value !== 0){
+        this.setState({
+          value:eval(this.state.value + this.state.calculations),
+          calculations:'',
+          lastClicked:e
+        })
+      }else {
+        this.setState({
+          value:eval(this.state.calculations),
+          calculations:'',
+          lastClicked:e
+        })
+      }
+        
+    } else if(e === '/' || e=== '*' || e=== '-' || e ==='+' || e==='.'){
+        //avoid more than one type of above symbols
+        if(this.state.lastClicked !== e){
+
+        this.setState({
+          calculations:this.state.calculations + e,
+          lastClicked:e
+        });
+      } 
+    } else {
       this.setState({
-        value:eval(this.state.value)
-      })
-    } else{
-      this.setState({
-        value:this.state.value + e
-      });
+          calculations:this.state.calculations + e,
+          lastClicked:e
+        });
     }
   }
   render() {
     return (
       <div className="App">
-        <Display calculations={this.state.value} value={this.state.value} />
+        <Display calculations={this.state.calculations} result={this.state.value} />
         <Buttons calculate={this.calculate}/>
       </div>
     );
@@ -44,6 +68,7 @@ class Display extends Component {
   render() {
     return(
       <div className="Display">
+        <div className='result'>{this.props.result}</div>
         <div><input type='text' defaultValue={this.props.calculations} /></div>
       </div>
     )
@@ -54,13 +79,10 @@ class Buttons extends Component {
   constructor() {
     super()
     this.handleClick = this.handleClick.bind(this)
-
-
   }
 
   handleClick = function(e) {
     this.props.calculate(e);
-    console.log(e);
   }
   render() {
     return(

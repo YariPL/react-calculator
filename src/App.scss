@@ -25,6 +25,13 @@ body {
 		box-sizing: border-box;
 		border: 2px solid;
 		position: relative;
+		.result {
+			height: 20%;
+			background: red;
+			color: white;
+			width: fit-content;
+			padding: 4px;
+		}
 		div {
 			height: 100%;
 			input {
