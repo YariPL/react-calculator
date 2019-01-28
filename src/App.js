@@ -7,9 +7,14 @@ class App extends Component {
     this.state = {
      value:0
     }
+        this.calculate = this.calculate.bind(this)
+
   }
   calculate =function(e){
     console.log(e);
+    this.setState({
+      value:e
+    });
   }
   render() {
     return (
@@ -34,7 +39,12 @@ class Display extends Component {
 }
 
 class Buttons extends Component {
+  constructor() {
+    super()
+    this.handleClick = this.handleClick.bind(this)
 
+
+  }
 
   handleClick = function(e) {
     this.props.calculate(e);
