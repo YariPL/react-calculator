@@ -5,21 +5,33 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-     value:0
+      value:0,
+      calculations: ''
     }
         this.calculate = this.calculate.bind(this)
 
   }
   calculate =function(e){
     console.log(e);
-    this.setState({
-      value:e
-    });
+    if(e === 'AC') {
+      this.setState({
+        value:0,
+        calculations:0
+      })
+    } else if(e === '='){
+      this.setState({
+        calculations:eval(this.state.calculations)
+      })
+    } else{
+      this.setState({
+        value:this.state.calculations + e
+      });
+    }
   }
   render() {
     return (
       <div className="App">
-        <Display value={this.state.value}/>
+        <Display calculations={this.state.calculations} value={this.state.value} />
         <Buttons calculate={this.calculate}/>
       </div>
     );
@@ -32,7 +44,7 @@ class Display extends Component {
   render() {
     return(
       <div className="Display">
-        <div><input type='text' value={this.props.value} /></div>
+        <div><input type='text' defaultValue={this.props.value} /></div>
       </div>
     )
   }
@@ -48,70 +60,71 @@ class Buttons extends Component {
 
   handleClick = function(e) {
     this.props.calculate(e);
+    console.log(e);
   }
   render() {
     return(
       <div className="Buttons">
         <div className='row'>
-          <div className='ac' onClick={(event)=>this.handleClick(event.target.className)}>
-          <span>AC</span>
+          <div className='ac' data-id='AC' onClick={(event)=>this.handleClick(event.target.getAttribute('data-id'))}>
+            <span>AC</span>
           </div>
-          <div className='by' onClick={(event)=>this.handleClick(event.target.className)}>
-          <span>/</span>
+          <div className='by' data-id='/' onClick={(event)=>this.handleClick(event.target.getAttribute('data-id'))}>
+            <span>/</span>
           </div>
-          <div className='times' onClick={(event)=>this.handleClick(event.target.className)}>
-          <span>X</span>
-          </div>
-        </div>
-        <div className='row'>
-          <div className='seven' onClick={(event)=>this.handleClick(event.target.className)}>
-          <span>7</span>
-          </div>
-          <div className='eight' onClick={(event)=>this.handleClick(event.target.className)}>
-          <span>8</span>
-          </div>
-          <div className='nine' onClick={(event)=>this.handleClick(event.target.className)}>
-          <span>9</span>
-          </div>
-          <div className='minus' onClick={(event)=>this.handleClick(event.target.className)}>
-          <span>-</span>
+          <div className='times' data-id='*' onClick={(event)=>this.handleClick(event.target.getAttribute('data-id'))}>
+            <span>X</span>
           </div>
         </div>
         <div className='row'>
-          <div className='four' onClick={(event)=>this.handleClick(event.target.className)}>
-          <span>4</span>
+          <div className='seven' data-id='7' onClick={(event)=>this.handleClick(event.target.getAttribute('data-id'))}>
+            <span>7</span>
           </div>
-          <div className='five' onClick={(event)=>this.handleClick(event.target.className)}>
-          <span>5</span>
+          <div className='eight' data-id='8' onClick={(event)=>this.handleClick(event.target.getAttribute('data-id'))}>
+            <span>8</span>
           </div>
-          <div className='six' onClick={(event)=>this.handleClick(event.target.className)}>
-          <span>6</span>
+          <div className='nine' data-id='9' onClick={(event)=>this.handleClick(event.target.getAttribute('data-id'))}>
+            <span>9</span>
           </div>
-          <div className='plus' onClick={(event)=>this.handleClick(event.target.className)}>
-          <span>+</span>
+          <div className='minus' data-id='-' onClick={(event)=>this.handleClick(event.target.getAttribute('data-id'))}>
+            <span>-</span>
+          </div>
+        </div>
+        <div className='row'>
+          <div className='four' data-id='4' onClick={(event)=>this.handleClick(event.target.getAttribute('data-id'))}>
+            <span>4</span>
+          </div>
+          <div className='five' data-id='5' onClick={(event)=>this.handleClick(event.target.getAttribute('data-id'))}>
+            <span>5</span>
+          </div>
+          <div className='six' data-id='6' onClick={(event)=>this.handleClick(event.target.getAttribute('data-id'))}>
+            <span>6</span>
+          </div>
+          <div className='plus' data-id='+' onClick={(event)=>this.handleClick(event.target.getAttribute('data-id'))}>
+            <span>+</span>
           </div>
         </div>
         <div className='row rowSpecial equalRow'>
-          <div className='one' onClick={(event)=>this.handleClick(event.target.className)}>
-          <span>1</span>
+          <div className='one' data-id='1' onClick={(event)=>this.handleClick(event.target.getAttribute('data-id'))}>
+            <span>1</span>
           </div>
-          <div className='two' onClick={(event)=>this.handleClick(event.target.className)}>
-          <span>2</span>
+          <div className='two' data-id='2' onClick={(event)=>this.handleClick(event.target.getAttribute('data-id'))}>
+            <span>2</span>
           </div>
-          <div className='three' onClick={(event)=>this.handleClick(event.target.className)}>
-          <span>3</span>
+          <div className='three' data-id='3' onClick={(event)=>this.handleClick(event.target.getAttribute('data-id'))}>
+            <span>3</span>
           </div>
-          <div className='equal' onClick={(event)=>this.handleClick(event.target.className)}>
-          <span>=</span>
+          <div className='equal' data-id='=' onClick={(event)=>this.handleClick(event.target.getAttribute('data-id'))}>
+            <span>=</span>
           </div>
         </div>
 
         <div className='row rowSpecial'>
-          <div className='zero' onClick={(event)=>this.handleClick(event.target.className)}>
-          <span>0</span>
+          <div className='zero' data-id='0' onClick={(event)=>this.handleClick(event.target.getAttribute('data-id'))}>
+            <span>0</span>
           </div>
-          <div className='dot' onClick={(event)=>this.handleClick(event.target.className)}>
-          <span>.</span>
+          <div className='dot' data-id='.' onClick={(event)=>this.handleClick(event.target.getAttribute('data-id'))}>
+            <span>.</span>
           </div>
         </div>
          
