@@ -14,7 +14,7 @@ class App extends Component {
 	}
 	calculate =function(e){
 		let l = this.state.lastClicked;
-
+		let forbidden = ['/','*','-','+','.'];
 		console.log(e);
 		console.log(this.state.lastClicked);
 		if(e === 'AC') {
@@ -24,8 +24,17 @@ class App extends Component {
 				lastClicked:''
 			})
 		} else if(e === '='){
-			if(l === '/' || l=== '*' || l=== '-' || l ==='+' || l==='.')return;
-			if(this.state.value !== 0){
+/*			if(this.state.calculations[0] === '*'){return};
+*/			for(let i=0; i<forbidden.length;i++){
+					if(forbidden[i]===this.state.calculations[0] || forbidden[i] == l){
+						this.setState({
+							calculations:''
+						})
+						return;
+					}
+				}
+/*			if(l === '/' || l=== '*' || l=== '-' || l ==='+' || l==='.')return;
+*/			if(this.state.value !== 0){
 				this.setState({
 					value:eval(this.state.value + this.state.calculations),
 					calculations:'',
