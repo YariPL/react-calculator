@@ -13,6 +13,7 @@ class App extends Component {
 
   }
   calculate =function(e){
+          let l = this.state.lastClicked;
 
     console.log(e);
     console.log(this.state.lastClicked);
@@ -23,6 +24,7 @@ class App extends Component {
         lastClicked:''
       })
     } else if(e === '='){
+      if(l === '/' || l=== '*' || l=== '-' || l ==='+' || l==='.')return;
       if(this.state.value !== 0){
         this.setState({
           value:eval(this.state.value + this.state.calculations),
@@ -39,7 +41,6 @@ class App extends Component {
       }
         
     } else if(e === '/' || e=== '*' || e=== '-' || e ==='+' || e==='.'){
-      let l = this.state.lastClicked;
       if(l === '/' || l=== '*' || l=== '-' || l ==='+' || l==='.')return;
       //avoid more than one type of above symbols
 
