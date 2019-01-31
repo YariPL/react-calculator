@@ -30,13 +30,13 @@ class App extends Component {
 						this.setState({
 							calculations:''
 						})
-						return;
+						return; 
 					}
 				}
 /*			if(l === '/' || l=== '*' || l=== '-' || l ==='+' || l==='.')return;
 */			if(this.state.value !== 0){
 				this.setState({
-					value:eval(this.state.value + this.state.calculations),
+					value:eval(this.state.calculations),
 					calculations:'',
 					lastClicked:e
 				})
