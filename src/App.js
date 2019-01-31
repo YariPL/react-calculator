@@ -9,19 +9,13 @@ class App extends Component {
 			calculations: '',
 			lastClicked:''
 		}
-				this.calculate = this.calculate.bind(this)
+		this.calculate = this.calculate.bind(this)
 
 	}
 	calculate =function(e){
 
 		let l = this.state.lastClicked;
 		let forbidden = ['/','*','-','+','.'];
-		console.log(e);
-		console.log(this.state.lastClicked);
-
-		
-
-		
 
 		if(e === 'AC') {
 			this.setState({
@@ -31,20 +25,22 @@ class App extends Component {
 			})
 		} else if(e === '='){
 
-		//block typing second zero
-		if(this.state.calculations[0] === '0' || this.state.calculations[1] === '0') {
-			this.setState({
-				value:'invalid',
-				calculations:''
-			})
-			return;
-		}
+			//block typing second zero
+			if(this.state.calculations[0] === '0' || this.state.calculations[1] === '0') {
+				this.setState({
+					value:'invalid',
+					calculations:''
+				})
+				return;
+			}
+			//if empty do nothing
 			if(this.state.calculations === '') {
 				return;
 			}
 
+			//if first letter if forbidden return invalid
 			for(let i=0; i<forbidden.length;i++){
-				if(forbidden[i]===this.state.calculations[0] || forbidden[i] == l){
+				if(forbidden[i]===this.state.calculations[0] || forbidden[i] === l){
 					this.setState({
 						value:'invalid',
 						calculations:''
@@ -52,25 +48,17 @@ class App extends Component {
 					return; 
 				}
 			}
-			/*if(this.state.value !== 0){*/
-				this.setState({
-					value:eval(this.state.calculations),
-					calculations:'',
-					lastClicked:e
-				})
-			/*} else {
-				this.setState({
-					//use eval just because it's learning project(NOT TO USE IN REAL PROJECT)
-					value:eval(this.state.calculations),
-					calculations:'',
-					lastClicked:e
-				})
-			}*/
+			//return result of calculations
+			this.setState({
+				value:eval(this.state.calculations),
+				calculations:'',
+				lastClicked:e
+			})
 			
-				
+			
 		} else if(e === '/' || e=== '*' || e=== '-' || e ==='+' || e==='.'){
+			//evoild two forbidden in row
 			if(l === '/' || l=== '*' || l=== '-' || l ==='+' || l==='.')return;
-			//avoid more than one type of above symbols
 
 			this.setState({
 				calculations:this.state.calculations + e,
@@ -99,7 +87,7 @@ export default App;
 class Display extends Component {
 	render() {
 		return(
-			<div className="Display">
+			<div id="display" className="Display">
 				<div className='result'>{this.props.result}</div>
 				<div><input type='text' defaultValue={this.props.calculations} /></div>
 			</div>
@@ -120,13 +108,13 @@ class Buttons extends Component {
 		return(
 			<div className="Buttons">
 				<div className='row'>
-					<div className='ac' data-id='AC' onClick={(event)=>this.handleClick(event.currentTarget.getAttribute('data-id'))}>
+					<div id="clear" className='ac' data-id='AC' onClick={(event)=>this.handleClick(event.currentTarget.getAttribute('data-id'))}>
 						<span>AC</span>
 					</div>
-					<div className='by spec' data-id='/' onClick={(event)=>this.handleClick(event.currentTarget.getAttribute('data-id'))}>
+					<div id="divide" className='by spec' data-id='/' onClick={(event)=>this.handleClick(event.currentTarget.getAttribute('data-id'))}>
 						<span>/</span>
 					</div>
-					<div className='times spec' data-id='*' onClick={(event)=>this.handleClick(event.currentTarget.getAttribute('data-id'))}>
+					<div id="multiply" className='times spec' data-id='*' onClick={(event)=>this.handleClick(event.currentTarget.getAttribute('data-id'))}>
 						<span>X</span>
 					</div>
 				</div>
@@ -140,7 +128,7 @@ class Buttons extends Component {
 					<div className='nine' data-id='9' onClick={(event)=>this.handleClick(event.currentTarget.getAttribute('data-id'))}>
 						<span>9</span>
 					</div>
-					<div className='minus spec' data-id='-' onClick={(event)=>this.handleClick(event.currentTarget.getAttribute('data-id'))}>
+					<div id="subtract" className='minus spec' data-id='-' onClick={(event)=>this.handleClick(event.currentTarget.getAttribute('data-id'))}>
 						<span>-</span>
 					</div>
 				</div>
@@ -154,7 +142,7 @@ class Buttons extends Component {
 					<div className='six' data-id='6' onClick={(event)=>this.handleClick(event.currentTarget.getAttribute('data-id'))}>
 						<span>6</span>
 					</div>
-					<div className='plus spec' data-id='+' onClick={(event)=>this.handleClick(event.currentTarget.getAttribute('data-id'))}>
+					<div  id="add" className='plus spec' data-id='+' onClick={(event)=>this.handleClick(event.currentTarget.getAttribute('data-id'))}>
 						<span>+</span>
 					</div>
 				</div>
@@ -177,7 +165,7 @@ class Buttons extends Component {
 					<div className='zero' data-id='0' onClick={(event)=>this.handleClick(event.currentTarget.getAttribute('data-id'))}>
 						<span>0</span>
 					</div>
-					<div className='dot' data-id='.' onClick={(event)=>this.handleClick(event.currentTarget.getAttribute('data-id'))}>
+					<div id="decimal" className='dot' data-id='.' onClick={(event)=>this.handleClick(event.currentTarget.getAttribute('data-id'))}>
 						<span>.</span>
 					</div>
 				</div>
