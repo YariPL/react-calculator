@@ -13,10 +13,16 @@ class App extends Component {
 
 	}
 	calculate =function(e){
+
 		let l = this.state.lastClicked;
 		let forbidden = ['/','*','-','+','.'];
 		console.log(e);
 		console.log(this.state.lastClicked);
+
+		
+
+		
+
 		if(e === 'AC') {
 			this.setState({
 				value:0,
@@ -24,30 +30,43 @@ class App extends Component {
 				lastClicked:''
 			})
 		} else if(e === '='){
-/*			if(this.state.calculations[0] === '*'){return};
-*/			for(let i=0; i<forbidden.length;i++){
-					if(forbidden[i]===this.state.calculations[0] || forbidden[i] == l){
-						this.setState({
-							calculations:''
-						})
-						return; 
-					}
+
+		//block typing second zero
+		if(this.state.calculations[0] === '0' || this.state.calculations[1] === '0') {
+			this.setState({
+				value:'invalid',
+				calculations:''
+			})
+			return;
+		}
+			if(this.state.calculations === '') {
+				return;
+			}
+
+			for(let i=0; i<forbidden.length;i++){
+				if(forbidden[i]===this.state.calculations[0] || forbidden[i] == l){
+					this.setState({
+						value:'invalid',
+						calculations:''
+					})
+					return; 
 				}
-/*			if(l === '/' || l=== '*' || l=== '-' || l ==='+' || l==='.')return;
-*/			if(this.state.value !== 0){
+			}
+			/*if(this.state.value !== 0){*/
 				this.setState({
 					value:eval(this.state.calculations),
 					calculations:'',
 					lastClicked:e
 				})
-			} else {
+			/*} else {
 				this.setState({
 					//use eval just because it's learning project(NOT TO USE IN REAL PROJECT)
 					value:eval(this.state.calculations),
 					calculations:'',
 					lastClicked:e
 				})
-			}
+			}*/
+			
 				
 		} else if(e === '/' || e=== '*' || e=== '-' || e ==='+' || e==='.'){
 			if(l === '/' || l=== '*' || l=== '-' || l ==='+' || l==='.')return;
