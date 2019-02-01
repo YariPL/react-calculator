@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+//TO DO:
+//show 0 on start
 
 class App extends Component {
 	constructor(props){
@@ -13,17 +15,18 @@ class App extends Component {
 
 	}
 	calculate =function(e){
-
 		let l = this.state.lastClicked;
 		let forbidden = ['/','*','-','+','.'];
 
 		if(e === 'AC') {
+			console.log('ac');
 			this.setState({
 				value:0,
 				calculations:'',
 				lastClicked:''
 			})
 		} else if(e === '='){
+		console.log('else if(e === "=")');
 
 			//block typing second zero
 			if(this.state.calculations[0] === '0' || this.state.calculations[1] === '0') {
@@ -31,6 +34,7 @@ class App extends Component {
 					value:'invalid',
 					calculations:''
 				})
+
 				return;
 			}
 			//if empty do nothing
@@ -57,6 +61,8 @@ class App extends Component {
 			
 			
 		} else if(e === '/' || e=== '*' || e=== '-' || e ==='+' || e==='.'){
+						console.log('else if(e === '/'');
+
 			//evoild two forbidden in row
 			if(l === '/' || l=== '*' || l=== '-' || l ==='+' || l==='.')return;
 
@@ -66,10 +72,13 @@ class App extends Component {
 			});
 			 
 		} else {
+			console.log('else');
+
 			this.setState({
 				calculations:this.state.calculations + e,
 				lastClicked:e
 			});
+			console.log(this.state.calculations);
 		}
 	}
 	render() {
