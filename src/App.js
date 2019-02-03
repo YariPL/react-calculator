@@ -8,7 +8,7 @@ class App extends Component {
 		super(props);
 		this.state = {
 			value:0,
-			calculations: '',
+			calculations: '0',
 			lastClicked:''
 		}
 		this.calculate = this.calculate.bind(this)
@@ -18,6 +18,14 @@ class App extends Component {
 		let l = this.state.lastClicked;
 		let forbidden = ['/','*','-','+','.'];
 
+		if(this.state.calculations[0] === '0') {
+			console.log('sfaf');
+			this.setState({
+				value:0,
+				calculations:e
+			})
+			return;
+		}
 		if(e === 'AC') {
 			console.log('ac');
 			this.setState({
@@ -27,6 +35,7 @@ class App extends Component {
 			})
 		} else if(e === '='){
 		console.log('else if(e === "=")');
+
 
 			//block typing second zero
 			if(this.state.calculations[0] === '0' || this.state.calculations[1] === '0') {
@@ -39,6 +48,7 @@ class App extends Component {
 			}
 			//if empty do nothing
 			if(this.state.calculations === '') {
+				console.log('empty')
 				return;
 			}
 
