@@ -8,7 +8,7 @@ class App extends Component {
 		super(props);
 		this.state = {
 			value:0,
-			calculations: 's',
+			calculations: '0',
 			lastClicked:''
 		}
 		this.calculate = this.calculate.bind(this)
@@ -17,24 +17,18 @@ class App extends Component {
 
 
 	calculate =function(e){
-		if(this.state.calculations[0] === 's') {
-			console.log('nu')
-			this.setState({calculations: 'e'}, () => {
-    console.log(this.state.calculations);
-    
-});
-return;
-		}
+		
 		console.log(e);
 		let l = this.state.lastClicked;
 		let forbidden = ['/','*','-','+','.'];
 
+		//this change value from standard 0 to clicked
 		if(this.state.calculations[0] === '0') {
-			console.log('sfaf');
-			this.setState({
-				value:0,
-				calculations:e
-			})
+			console.log('nu')
+			this.setState({calculations: e}, () => {
+			    console.log(this.state.calculations);
+
+			});
 			return;
 		}
 		if(e === 'AC') {
