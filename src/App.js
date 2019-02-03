@@ -23,21 +23,22 @@ class App extends Component {
 		let forbidden = ['/','*','-','+','.'];
 
 		//this change value from standard 0 to clicked
-		if(this.state.calculations[0] === '0') {
+		if(this.state.calculations[0] === '0' && e !== 'AC') {
 			console.log('nu')
+			if(e === '=')return;
 			this.setState({calculations: e}, () => {
 			    console.log(this.state.calculations);
 
 			});
 			return;
-		}
-		if(e === 'AC') {
+		} else if(e === 'AC') {
 			console.log('ac');
 			this.setState({
 				value:0,
-				calculations:'',
+				calculations:'0',
 				lastClicked:''
 			})
+			return;
 		} else if(e === '='){
 		console.log('else if(e === "=")');
 
@@ -53,7 +54,7 @@ class App extends Component {
 				return;
 			}
 			//if empty do nothing
-			if(this.state.calculations === '') {
+			if(this.state.calculations === '' ) {
 				console.log('empty')
 				return;
 			}
@@ -74,7 +75,7 @@ class App extends Component {
 				calculations:'',
 				lastClicked:e
 			})
-			
+			return; 
 			
 		} else if(e === '/' || e=== '*' || e=== '-' || e ==='+' || e==='.'){
 						console.log('else if(e === '/'');
@@ -87,15 +88,17 @@ class App extends Component {
 				lastClicked:e
 			});
 			 
+			 return;
 		} else {
 			console.log('else just else');
 						console.log(this.state.calculations);
-
+			
 			console.log(e);
 			this.setState({
 				calculations:this.state.calculations + e,
 				lastClicked:e
 			});
+			return;
 		}
 	}
 
