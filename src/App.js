@@ -16,14 +16,14 @@ class App extends Component {
 	}
 
 
-
 	calculate =function(e){
 		if(this.state.calculations[0] === 's') {
 			console.log('nu')
-			this.setState({
-				calculations:'a'
-			})
-			console.log(this.state.calculations);
+			this.setState({calculations: 'e'}, () => {
+    console.log(this.state.calculations);
+    
+});
+return;
 		}
 		console.log(e);
 		let l = this.state.lastClicked;
@@ -122,7 +122,7 @@ class Display extends Component {
 		return(
 			<div id="display" className="Display">
 				<div className='result'>{this.props.result}</div>
-				<div><input type='text' Value={this.props.calculations} /></div>
+				<div className='input'>{this.props.calculations}</div>
 			</div>
 		)
 	}

@@ -31,7 +31,7 @@ body {
       color: #ff5722;
       width: fit-content;
       padding: 4px; }
-    .App .Display div input {
+    .App .Display .input {
       background: #0c3a47;
       border: 0;
       color: white;

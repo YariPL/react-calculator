@@ -35,8 +35,7 @@ body {
 			width: fit-content;
 			padding: 4px;
 		}
-		div {
-			input {
+		.input {
 				background: #0c3a47;
 				border: 0;
 				color: white;
@@ -46,7 +45,7 @@ body {
 				height: 100%;
 				width: 100%;
 			}
-		}
+		
 	}
 	.Buttons {
 		height: 80%;
