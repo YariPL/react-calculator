@@ -8,13 +8,24 @@ class App extends Component {
 		super(props);
 		this.state = {
 			value:0,
-			calculations: '0',
+			calculations: 's',
 			lastClicked:''
 		}
 		this.calculate = this.calculate.bind(this)
 
 	}
+
+
+
 	calculate =function(e){
+		if(this.state.calculations[0] === 's') {
+			console.log('nu')
+			this.setState({
+				calculations:'a'
+			})
+			console.log(this.state.calculations);
+		}
+		console.log(e);
 		let l = this.state.lastClicked;
 		let forbidden = ['/','*','-','+','.'];
 
@@ -39,6 +50,7 @@ class App extends Component {
 
 			//block typing second zero
 			if(this.state.calculations[0] === '0' || this.state.calculations[1] === '0') {
+				console.log('both 0')
 				this.setState({
 					value:'invalid',
 					calculations:''
@@ -82,15 +94,17 @@ class App extends Component {
 			});
 			 
 		} else {
-			console.log('else');
+			console.log('else just else');
+						console.log(this.state.calculations);
 
+			console.log(e);
 			this.setState({
 				calculations:this.state.calculations + e,
 				lastClicked:e
 			});
-			console.log(this.state.calculations);
 		}
 	}
+
 	render() {
 		return (
 			<div className="App">
@@ -108,7 +122,7 @@ class Display extends Component {
 		return(
 			<div id="display" className="Display">
 				<div className='result'>{this.props.result}</div>
-				<div><input type='text' defaultValue={this.props.calculations} /></div>
+				<div><input type='text' Value={this.props.calculations} /></div>
 			</div>
 		)
 	}
