@@ -26,11 +26,18 @@ class App extends Component {
 		if(this.state.calculations[0] === '0' && e !== 'AC') {
 			console.log('nu')
 			if(e === '=')return;
-			this.setState({calculations: e}, () => {
-			    console.log(this.state.calculations);
+			if(e === '.'){
+				this.setState({calculations: '0.'}, () => {
+					console.log('t0000his.state.calculations');
+				});
+				return;
+			} else {
+				this.setState({calculations: e}, () => {
+				    console.log('t11111his.state.calculations');
 
-			});
-			return;
+				});
+				return;
+			}
 		} else if(e === 'AC') {
 			console.log('ac');
 			this.setState({
@@ -46,6 +53,7 @@ class App extends Component {
 			//block typing second zero
 			if(this.state.calculations[0] === '0' || this.state.calculations[1] === '0') {
 				console.log('both 0')
+				
 				this.setState({
 					value:'invalid',
 					calculations:''
@@ -140,8 +148,8 @@ export default App;
 class Display extends Component {
 	render() {
 		return(
-			<div id="display" className="Display">
-				<div className='result'>{this.props.result}</div>
+			<div  className="Display">
+				<div id="display" className='result'>{this.props.result}</div>
 				<div className='input'>{this.props.calculations}</div>
 			</div>
 		)
