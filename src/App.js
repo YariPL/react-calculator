@@ -61,21 +61,44 @@ class App extends Component {
 
 			//if first letter if forbidden return invalid
 			for(let i=0; i<forbidden.length;i++){
-				if(forbidden[i]===this.state.calculations[0] || forbidden[i] === l){
+				console.log('forbidden');
+				if(forbidden[i]===this.state.calculations || forbidden[i] === l){
 					this.setState({
-						value:'invalid',
-						calculations:''
+/*						value:'invalid',
+*/						calculations:'0'
 					})
 					return; 
 				}
 			}
-			//return result of calculations
+			/*//return result of calculations
 			this.setState({
 				value:eval(this.state.calculations),
 				calculations:'',
 				lastClicked:e
 			})
-			return; 
+			return; */
+
+
+			if(this.state.value === 0){
+				console.log(e);
+				this.setState({
+					value:eval(this.state.calculations)*1,
+					calculations:'0',
+					lastClicked:e
+				})
+				return;
+			} else {
+				console.log('else not 0 hello')
+				this.setState({
+					value:eval(this.state.value + this.state.calculations)*1,
+					calculations:'0',
+					lastClicked:e
+				})
+				return;
+
+			}
+
+
 			
 		} else if(e === '/' || e=== '*' || e=== '-' || e ==='+' || e==='.'){
 						console.log('else if(e === '/'');
@@ -92,7 +115,7 @@ class App extends Component {
 		} else {
 			console.log('else just else');
 						console.log(this.state.calculations);
-			
+
 			console.log(e);
 			this.setState({
 				calculations:this.state.calculations + e,
