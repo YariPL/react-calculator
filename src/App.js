@@ -48,12 +48,16 @@ class App extends Component {
 			return;
 		} else if(e === '='){
 		console.log('else if(e === "=")');
-
+		
 
 			//block typing second zero
-			if(this.state.calculations[0] === '0' || this.state.calculations[1] === '0') {
+			if(this.state.calculations[0] === '0' && this.state.calculations[1] === '0') {
+				console.log('this.state.calculations')
+				console.log(this.state.calculations[0])
+
 				console.log('both 0')
-				
+								console.log(this.state.calculations)
+
 				this.setState({
 					value:'invalid',
 					calculations:''
@@ -90,7 +94,7 @@ class App extends Component {
 			if(this.state.value === 0){
 				console.log(e);
 				this.setState({
-					value:eval(this.state.calculations)*1,
+					value:eval(this.state.calculations),
 					calculations:'0',
 					lastClicked:e
 				})
@@ -98,7 +102,7 @@ class App extends Component {
 			} else {
 				console.log('else not 0 hello')
 				this.setState({
-					value:eval(this.state.value + this.state.calculations)*1,
+					value:eval(this.state.value + this.state.calculations),
 					calculations:'0',
 					lastClicked:e
 				})
@@ -148,7 +152,7 @@ export default App;
 class Display extends Component {
 	render() {
 		return(
-			<div  className="Display">
+			<div className="Display">
 				<div id="display" className='result'>{this.props.result}</div>
 				<div className='input'>{this.props.calculations}</div>
 			</div>
